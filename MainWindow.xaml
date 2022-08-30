@@ -32,7 +32,9 @@
                         <RowDefinition Height="25.6*"/>
                         <RowDefinition Height="683.6*"/>
                     </Grid.RowDefinitions>
-                    
+
+
+
                     <!--Menu Heading-->
                     <Viewbox Grid.Row="1">
                         <Border BorderBrush="#FFFFFF"
@@ -44,21 +46,260 @@
                             </TextBlock>
                         </Border>
                     </Viewbox>
-                    
-                    <!--Menu-->
 
+                    <!--Ingredients Heading-->
+                    <Border Grid.Row="3">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="32*"/>
+                                <RowDefinition Height="11*"/>
+                                <RowDefinition Height="32*"/>
+                                <RowDefinition Height="11*"/>
+                                <RowDefinition Height="32*"/>
+                                <RowDefinition Height="11*"/>
+                                <RowDefinition Height="32*"/>
+                                <RowDefinition Height="11*"/>
+                                <RowDefinition Height="32*"/>
+                                <RowDefinition Height="11*"/>
+                                <RowDefinition Height="32*"/>
+                                <RowDefinition Height="11*"/>
+                                <RowDefinition Height="32*"/>
+                                <RowDefinition Height="375*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="43.5*"/>
+                                <ColumnDefinition Width="133*"/>
+                                <ColumnDefinition Width="43.5*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <!--Menu #1-->
+                            <Button Grid.Column="1"
+                                    Grid.Row="0"
+                                    Background="#363645"
+                                    BorderThickness="0"
+                                    Content="TITLE"
+                                    Foreground="White"
+                                    FontFamily="Segoe UI"
+                                    FontWeight="Bold">
+                                <Button.Resources>
+                                    <Style TargetType="Border">
+                                        <Setter Property="CornerRadius" 
+                                                Value="8"/>
+                                    </Style>
+                                </Button.Resources>
+                            </Button>
+
+                            <!--Menu #2-->
+                            <Button Grid.Column="1"
+                                    Grid.Row="2"
+                                    Background="#363645"
+                                    BorderThickness="0"
+                                    Content="TITLE"
+                                    Foreground="White"
+                                    FontFamily="Segoe UI"
+                                    FontWeight="Bold">
+                                <Button.Resources>
+                                    <Style TargetType="Border">
+                                        <Setter Property="CornerRadius" 
+                                                Value="8"/>
+                                    </Style>
+                                </Button.Resources>
+                            </Button>
+
+                            <!--Menu #3-->
+                            <Button Grid.Column="1"
+                                    Grid.Row="4"
+                                    Background="#363645"
+                                    BorderThickness="0"
+                                    Content="TITLE"
+                                    Foreground="White"
+                                    FontFamily="Segoe UI"
+                                    FontWeight="Bold">
+                                <Button.Resources>
+                                    <Style TargetType="Border">
+                                        <Setter Property="CornerRadius" 
+                                                Value="8"/>
+                                    </Style>
+                                </Button.Resources>
+                            </Button>
+
+                            <!--Menu #4-->
+                            <Button Grid.Column="1"
+                                    Grid.Row="6"
+                                    Background="#363645"
+                                    BorderThickness="0"
+                                    Content="TITLE"
+                                    Foreground="White"
+                                    FontFamily="Segoe UI"
+                                    FontWeight="Bold">
+                                <Button.Resources>
+                                    <Style TargetType="Border">
+                                        <Setter Property="CornerRadius" 
+                                                Value="8"/>
+                                    </Style>
+                                </Button.Resources>
+                            </Button>
+
+                            <!--Menu #5-->
+                            <Button Grid.Column="1"
+                                    Grid.Row="8"
+                                    Background="#363645"
+                                    BorderThickness="0"
+                                    Content="TITLE"
+                                    Foreground="White"
+                                    FontFamily="Segoe UI"
+                                    FontWeight="Bold">
+                                <Button.Resources>
+                                    <Style TargetType="Border">
+                                        <Setter Property="CornerRadius" 
+                                                Value="8"/>
+                                    </Style>
+                                </Button.Resources>
+                            </Button>
+
+                            <!--Menu #6-->
+                            <Button Grid.Column="1"
+                                    Grid.Row="10"
+                                    Background="#363645"
+                                    BorderThickness="0"
+                                    Content="TITLE"
+                                    Foreground="White"
+                                    FontFamily="Segoe UI"
+                                    FontWeight="Bold">
+                                <Button.Resources>
+                                    <Style TargetType="Border">
+                                        <Setter Property="CornerRadius" 
+                                                Value="8"/>
+                                    </Style>
+                                </Button.Resources>
+                            </Button>
+
+                            <!--Menu #7-->
+                            <Button Grid.Column="1"
+                                    Grid.Row="12"
+                                    Background="#363645"
+                                    BorderThickness="0"
+                                    Content="TITLE"
+                                    Foreground="White"
+                                    FontFamily="Segoe UI"
+                                    FontWeight="Bold">
+                                <Button.Resources>
+                                    <Style TargetType="Border">
+                                        <Setter Property="CornerRadius" 
+                                                Value="8"/>
+                                    </Style>
+                                </Button.Resources>
+                            </Button>
+                        </Grid>
+                    </Border>
                 </Grid>
             </Border>
-
             <!--Right Column-->
             <Border Grid.Column="1"
                     BorderThickness="0"
                     Background="Transparent">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="42*"/>
+                        <RowDefinition Height="733*"/>
+                    </Grid.RowDefinitions>
 
+                    <!--Header-->
+                    <Border Background="Transparent">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="601*"/>
+                                <ColumnDefinition Width="50*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <!--Close Button-->
+                            <Button Grid.Column="1">
+                            </Button>
+                        </Grid>
+                    </Border>
+
+                    <!--Contents-->
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="26*"/>
+                            <ColumnDefinition Width="599*"/>
+                            <ColumnDefinition Width="26*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="70*"/>
+                            <RowDefinition Height="642*"/>
+                            <RowDefinition Height="20*"/>
+                        </Grid.RowDefinitions>
+
+                        <!--Heading-->
+                        <Grid Grid.Column="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="301*"/>
+                                <ColumnDefinition Width="155*"/>
+                                <ColumnDefinition Width="143*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <!--Heading Title-->
+                            <Viewbox Grid.Column="0"
+                                        HorizontalAlignment="Right">
+                                <TextBlock Foreground="#FFC75F"
+                                    FontFamily="Segoe UI"
+                                    FontWeight="Bold"
+                                    Text="TITLE"
+                                    Margin="0,0,5,0">
+                                </TextBlock>
+                            </Viewbox>
+
+                            <!--Text Input-->
+                            <Grid Grid.Column="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <!--Input-->
+                                <TextBox FontFamily="Segoe UI"
+                                            FontWeight="SemiBold"
+                                            Foreground="Black"
+                                            Grid.Column="0"
+                                            TextAlignment="Center"
+                                            VerticalContentAlignment="Center"
+                                            BorderThickness="0"
+                                            Margin="0,15,0,15"
+                                            FontSize="20">
+                                    <TextBox.Resources>
+                                        <Style TargetType="Border">
+                                            <Setter Property="CornerRadius" Value="10"/>
+                                            <Setter Property="Background" Value="White"/>
+                                        </Style>
+                                    </TextBox.Resources>
+                                </TextBox>
+
+                                <Viewbox Grid.Column="1">
+                                    <TextBlock Foreground="#f2f2f2"
+                                    FontFamily="Segoe UI"
+                                    FontWeight="Bold"
+                                    Text="PEOPLE"
+                                    Margin="5,0,0,0">
+                                    </TextBlock>
+                                </Viewbox>
+                            </Grid>
+                        </Grid>
+
+                        <!--Ingredients Contents-->
+                        <Border Grid.Row="1"
+                                Grid.Column="1"
+                                Background="#363645"
+                                CornerRadius="10">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="57*"/>
+                                    <RowDefinition Height="627*"/>
+                                </Grid.RowDefinitions>
+                            </Grid>
+                        </Border>
+                    </Grid>
+                </Grid>
             </Border>
         </Grid>
-        
-        
     </Border>
-
 </Window>
