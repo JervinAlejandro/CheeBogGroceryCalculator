@@ -13,6 +13,66 @@
         BorderThickness="0"
         AllowsTransparency="True">
 
+    <Window.Resources>
+        <ImageBrush x:Key="buttonClose" ImageSource="/Images/Close-Hover.png" Stretch="Uniform"/>
+        
+        <Style x:Key="FocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="2" StrokeDashArray="1 2" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" SnapsToDevicePixels="true" StrokeThickness="1"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <SolidColorBrush x:Key="Button.Static.Background" Color="#FFDDDDDD"/>
+        <SolidColorBrush x:Key="Button.Static.Border" Color="#FF707070"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FFBEE6FD"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Border" Color="#FF3C7FB1"/>
+        <SolidColorBrush x:Key="Button.Pressed.Background" Color="#FFC4E5F6"/>
+        <SolidColorBrush x:Key="Button.Pressed.Border" Color="#FF2C628B"/>
+        <SolidColorBrush x:Key="Button.Disabled.Background" Color="#FFF4F4F4"/>
+        <SolidColorBrush x:Key="Button.Disabled.Border" Color="#FFADB2B5"/>
+        <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
+        <Style x:Key="ButtonStyleClose" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource buttonClose}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.MouseOver.Border}"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource buttonClose}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Pressed.Border}"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
     <Border BorderThickness="0"
             Background="#2B2B37">
         <!--Main Grid-->
@@ -64,7 +124,9 @@
                                 <RowDefinition Height="32*"/>
                                 <RowDefinition Height="11*"/>
                                 <RowDefinition Height="32*"/>
-                                <RowDefinition Height="375*"/>
+                                <RowDefinition Height="11*"/>
+                                <RowDefinition Height="32*"/>
+                                <RowDefinition Height="332*"/>
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="43.5*"/>
@@ -80,7 +142,8 @@
                                     Content="TITLE"
                                     Foreground="White"
                                     FontFamily="Segoe UI"
-                                    FontWeight="Bold">
+                                    FontWeight="Bold"
+                                    x:Name="buttonMenu1">
                                 <Button.Resources>
                                     <Style TargetType="Border">
                                         <Setter Property="CornerRadius" 
@@ -97,7 +160,8 @@
                                     Content="TITLE"
                                     Foreground="White"
                                     FontFamily="Segoe UI"
-                                    FontWeight="Bold">
+                                    FontWeight="Bold"
+                                    x:Name="buttonMenu2">
                                 <Button.Resources>
                                     <Style TargetType="Border">
                                         <Setter Property="CornerRadius" 
@@ -114,7 +178,9 @@
                                     Content="TITLE"
                                     Foreground="White"
                                     FontFamily="Segoe UI"
-                                    FontWeight="Bold">
+                                    FontWeight="Bold"
+                                    x:Name="buttonMenu3">
+
                                 <Button.Resources>
                                     <Style TargetType="Border">
                                         <Setter Property="CornerRadius" 
@@ -131,7 +197,9 @@
                                     Content="TITLE"
                                     Foreground="White"
                                     FontFamily="Segoe UI"
-                                    FontWeight="Bold">
+                                    FontWeight="Bold"
+                                    x:Name="buttonMenu4">
+
                                 <Button.Resources>
                                     <Style TargetType="Border">
                                         <Setter Property="CornerRadius" 
@@ -148,7 +216,9 @@
                                     Content="TITLE"
                                     Foreground="White"
                                     FontFamily="Segoe UI"
-                                    FontWeight="Bold">
+                                    FontWeight="Bold"
+                                    x:Name="buttonMenu5">
+
                                 <Button.Resources>
                                     <Style TargetType="Border">
                                         <Setter Property="CornerRadius" 
@@ -165,7 +235,9 @@
                                     Content="TITLE"
                                     Foreground="White"
                                     FontFamily="Segoe UI"
-                                    FontWeight="Bold">
+                                    FontWeight="Bold"
+                                    x:Name="buttonMenu6">
+
                                 <Button.Resources>
                                     <Style TargetType="Border">
                                         <Setter Property="CornerRadius" 
@@ -182,7 +254,28 @@
                                     Content="TITLE"
                                     Foreground="White"
                                     FontFamily="Segoe UI"
-                                    FontWeight="Bold">
+                                    FontWeight="Bold"
+                                    x:Name="buttonMenu7">
+
+                                <Button.Resources>
+                                    <Style TargetType="Border">
+                                        <Setter Property="CornerRadius" 
+                                                Value="8"/>
+                                    </Style>
+                                </Button.Resources>
+                            </Button>
+
+                            <!--Menu #8-->
+                            <Button Grid.Column="1"
+                                    Grid.Row="14"
+                                    Background="#363645"
+                                    BorderThickness="0"
+                                    Content="TITLE"
+                                    Foreground="White"
+                                    FontFamily="Segoe UI"
+                                    FontWeight="Bold"
+                                    x:Name="buttonMenu8">
+
                                 <Button.Resources>
                                     <Style TargetType="Border">
                                         <Setter Property="CornerRadius" 
@@ -208,12 +301,23 @@
                     <Border Background="Transparent">
                         <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="601*"/>
-                                <ColumnDefinition Width="50*"/>
+                                <ColumnDefinition Width="581*"/>
+                                <ColumnDefinition Width="70*"/>
                             </Grid.ColumnDefinitions>
 
+                            <Border x:Name="header"
+                                    MouseDown="header_MouseDown"
+                                    Background="Transparent">
+                            </Border>
                             <!--Close Button-->
-                            <Button Grid.Column="1">
+                            <Button Style="{DynamicResource ButtonStyleClose}" Grid.Column="1"
+                                    BorderThickness="0"
+                                    Margin="5,15,25,0"
+                                    x:Name="buttonClose"
+                                    Click="buttonClose_Click">
+                                <Button.Background>
+                                    <ImageBrush ImageSource="/Images/Close-Button.png" Stretch="Uniform"/>
+                                </Button.Background>
                             </Button>
                         </Grid>
                     </Border>
@@ -258,14 +362,15 @@
                                 </Grid.ColumnDefinitions>
                                 <!--Input-->
                                 <TextBox FontFamily="Segoe UI"
-                                            FontWeight="SemiBold"
-                                            Foreground="Black"
-                                            Grid.Column="0"
-                                            TextAlignment="Center"
-                                            VerticalContentAlignment="Center"
-                                            BorderThickness="0"
-                                            Margin="0,15,0,15"
-                                            FontSize="20">
+                                         FontWeight="SemiBold"
+                                         Foreground="Black"
+                                         Grid.Column="0"
+                                         TextAlignment="Center"
+                                         VerticalContentAlignment="Center"
+                                         BorderThickness="0"
+                                         Margin="0,15,0,15"
+                                         FontSize="20"
+                                         x:Name="textBoxInput">
                                     <TextBox.Resources>
                                         <Style TargetType="Border">
                                             <Setter Property="CornerRadius" Value="10"/>
@@ -291,10 +396,86 @@
                                 Background="#363645"
                                 CornerRadius="10">
                             <Grid>
-                                <Grid.RowDefinitions>
+                                <!--<Grid.RowDefinitions>
                                     <RowDefinition Height="57*"/>
                                     <RowDefinition Height="627*"/>
-                                </Grid.RowDefinitions>
+                                </Grid.RowDefinitions>-->
+                                
+                                <!--<Border BorderBrush="#FFFFFF"
+                                        BorderThickness="0,0,0,1"
+                                        Margin="50,0,50,0">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="115.25*"/>
+                                            <ColumnDefinition Width="115.25*"/>
+                                            <ColumnDefinition Width="115.25*"/>
+                                            <ColumnDefinition Width="115.25*"/>
+                                        </Grid.ColumnDefinitions>
+
+
+                                        --><!--Heading--><!--
+                                        <Viewbox Grid.Column="0"
+                                            HorizontalAlignment="Center">
+                                            <TextBlock Foreground="White"
+                                                       FontFamily="Segoe UI"
+                                                       FontWeight="Bold"
+                                                       Text="INGREDIENT"
+                                                       Padding="0,10,0,10">    
+                                            </TextBlock>
+                                        </Viewbox>
+
+                                        <Viewbox Grid.Column="1"
+                                                 HorizontalAlignment="Center">
+                                            <TextBlock Foreground="White"
+                                                       FontFamily="Segoe UI"
+                                                       FontWeight="Bold"
+                                                       Text="WEIGHT"
+                                                       Padding="20,10,0,10">       
+                                            </TextBlock>
+                                        </Viewbox>
+
+                                        <Viewbox Grid.Column="2"
+                                            HorizontalAlignment="Center">
+                                            <TextBlock Foreground="White"
+                                                       FontFamily="Segoe UI"
+                                                       FontWeight="Bold"
+                                                       Text="COST"
+                                                       Padding="5,10,0,10">        
+                                            </TextBlock>
+                                        </Viewbox>
+
+                                        <Viewbox Grid.Column="3"
+                                            HorizontalAlignment="Center">
+                                            <TextBlock Foreground="White"
+                                                       FontFamily="Segoe UI"
+                                                       FontWeight="Bold"
+                                                       Text="LOCATION"
+                                                       Padding="0,10,0,10">        
+                                            </TextBlock>
+                                        </Viewbox>
+                                    </Grid>
+                                </Border>-->
+                                <ListView Grid.Row="0"
+                                          Background="Transparent"
+                                          BorderThickness="0"
+                                          Margin="50,0,50,0">
+                                    <ListView.Resources>
+                                        <Style TargetType="GridViewColumnHeader">
+                                            <Setter Property="Background" Value="Transparent" />
+                                            <Setter Property="Foreground" Value="White"/>
+                                        </Style>
+                                    </ListView.Resources>
+                                    <ListView.View>
+                                        <GridView>
+                                            <GridView.Columns>
+                                                <GridViewColumn Header="INGREDIENT" DisplayMemberBinding="{Binding name}" Width="124"/>
+                                                <GridViewColumn Header="WEIGHT" DisplayMemberBinding="{Binding weight}" Width="125"/>
+                                                <GridViewColumn Header="COST" DisplayMemberBinding="{Binding cost}" Width="124"/>
+                                                <GridViewColumn Header="LOCATION" DisplayMemberBinding="{Binding location}" Width="124"/>
+                                            </GridView.Columns>
+                                        </GridView>
+                                    </ListView.View>
+                                </ListView>
                             </Grid>
                         </Border>
                     </Grid>
