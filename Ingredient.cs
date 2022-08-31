@@ -10,7 +10,7 @@ namespace CheeBogGrocery
     {
         public string name { get; set; }
         public double weight { get; set; }
-        public int cost { get; set; }
+        public double cost { get; set; }
         public string location { get; set; }
         public string metric { get; set; }
 
