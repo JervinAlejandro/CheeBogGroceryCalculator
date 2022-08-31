@@ -79,8 +79,6 @@ namespace CheeBogGrocery
             #endregion
             populateData();
             setMenuNames();
-            populateListView(0);
-            setPeople();
         }
 
         private void buttonClose_Click(object sender, RoutedEventArgs e)
@@ -95,21 +93,18 @@ namespace CheeBogGrocery
 
         private void buttonMenu1_Click(object sender, RoutedEventArgs e)
         {
-            populateListView(0);
             setHeading(0);
             current = 0;
         }
 
         private void buttonMenu2_Click(object sender, RoutedEventArgs e)
         {
-            populateListView(1);
             setHeading(1);
             current = 1;
         }
 
         private void buttonMenu3_Click(object sender, RoutedEventArgs e)
         {
-            populateListView(2);
             setHeading(2);
             current = 2;
 
@@ -117,28 +112,23 @@ namespace CheeBogGrocery
         }
         private void buttonMenu4_Click(object sender, RoutedEventArgs e)
         {
-            populateListView(3);
             setHeading(3);
             current = 3;
-
         }
         private void buttonMenu5_Click(object sender, RoutedEventArgs e)
         {
-            populateListView(4);
             setHeading(4);
             current = 4;
 
         }
         private void buttonMenu6_Click(object sender, RoutedEventArgs e)
         {
-            populateListView(5);
             setHeading(5);
             current = 5;
 
         }
         private void buttonMenu7_Click(object sender, RoutedEventArgs e)
         {
-            populateListView(6);
             setHeading(6);
             current = 6;
 
@@ -146,7 +136,6 @@ namespace CheeBogGrocery
 
         private void buttonMenu8_Click(object sender, RoutedEventArgs e)
         {
-            populateListView(7);
             setHeading(7);
             current = 7;
         }
@@ -185,6 +174,12 @@ namespace CheeBogGrocery
             }
         }
 
+        private void buttonDisplay_Click(object sender, RoutedEventArgs e)
+        {
+            changeData(current);
+            populateListView(current);
+        }
+
         private void changeData(int dishNumber)
         {
             // change according to the amount of people
@@ -195,7 +190,8 @@ namespace CheeBogGrocery
             double people = double.Parse(textBoxInput.Text);
             for (int i = 0; i < dishes[dishNumber].ingredients.Count; i++)
             {
-                dishes[dishNumber].ingredients[i].cost = (double.Parse(dishes[dishNumber].ingredients[i].cost) / (22 / double.Parse(textBoxInput.Text))).ToString();
+                dishes[dishNumber].ingredients[i].cost = dishes[dishNumber].ingredients[i].cost / ;
+                    //(double.Parse(dishes[dishNumber].ingredients[i].cost) / (22 / double.Parse(textBoxInput.Text))).ToString();
             }
         }
 
@@ -226,11 +222,20 @@ namespace CheeBogGrocery
             chickenPops.Add(getIngredient("Ginger"));
             chickenPops.Add(getIngredient("Garlic Bag"));
             chickenPops.Add(getIngredient("Tanaka Cooking Sake"));
-            chickenPops.Add(getIngredient("MasterFoods Soy Sauce"));
             chickenPops.Add(getIngredient("Raw Sugar"));
             chickenPops.Add(getIngredient("Potato Starch"));
             chickenPops.Add(getIngredient("Cooking Salt"));
             chickenPops.Add(getIngredient("Trumps Black Pepper"));
+
+            // Dish update example
+            dishes[0].ingredients[0].weight = "1";
+            dishes[0].ingredients[1].weight = "125";
+            dishes[0].ingredients[2].weight = "500";
+            dishes[0].ingredients[3].weight = "500";
+            dishes[0].ingredients[4].weight = "2";
+            dishes[0].ingredients[5].weight = "500";
+            dishes[0].ingredients[6].weight = "2";
+            dishes[0].ingredients[7].weight = "1";
             dishes[0].ingredients = chickenPops;
 
             dishes[1].name = "CHICKEN SKEWER";

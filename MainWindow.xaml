@@ -357,7 +357,7 @@
                                 <TextBlock Foreground="#FFC75F"
                                     FontFamily="Segoe UI"
                                     FontWeight="Bold"
-                                    Text="TITLE"
+                                    Text="MENU"
                                     Margin="35,0,5,0"
                                     x:Name="textBoxHeadingTitle">
                                 </TextBlock>
@@ -398,6 +398,23 @@
                                     </TextBlock>
                                 </Viewbox>
                             </Grid>
+                            <Border Grid.Column="2"
+                                    Margin="20,10,20,10">
+                                <Button BorderThickness="0"
+                                        Background="#DFE0DF"
+                                        FontFamily="Segoe UI"
+                                        FontWeight="SemiBold"
+                                        FontSize="20"
+                                        x:Name="buttonDisplay"
+                                        Click="buttonDisplay_Click">
+                                    DISPLAY
+                                    <Button.Resources>
+                                        <Style TargetType="Border">
+                                            <Setter Property="CornerRadius" Value="10"/>
+                                        </Style>
+                                    </Button.Resources>
+                                </Button>
+                            </Border>
                         </Grid>
 
                         <!--Ingredients Contents-->
