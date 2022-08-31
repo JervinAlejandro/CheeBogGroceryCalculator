@@ -25,7 +25,6 @@ namespace CheeBogGrocery
     {
         private List<Ingredient> groceries = new List<Ingredient>();
         private List<Dish> dishes = new List<Dish>();
-        private bool loaded1, loaded2, loaded3, loaded4, loaded5, loaded6, loaded7, loaded8 = false;
         private int current = 0;
 
         public MainWindow()
@@ -75,7 +74,6 @@ namespace CheeBogGrocery
             groceries.Add(createIngredients("Vinegar", "2", "1.99", "Spudshed", "l"));
             groceries.Add(createIngredients("Whipping Cream", "1", "4.99", "Spudshed", "l"));
             groceries.Add(createIngredients("Wonton Skin", "500", "3.99", "NP SuperMarket", "g"));
-            addPrefix();
             #endregion
             populateData();
             setMenuNames();
@@ -154,10 +152,6 @@ namespace CheeBogGrocery
                 e.Handled = true;
             }
 
-            if (e.Key == Key.Enter)
-            {
-                changeData(current);
-            }
         }
         private void setHeading(int dishNumber)
         {
@@ -176,33 +170,13 @@ namespace CheeBogGrocery
 
         private void buttonDisplay_Click(object sender, RoutedEventArgs e)
         {
-            changeData(current);
+            dishes[current].ingredients = resetChickenPops();
+            int servings = int.Parse(textBoxInput.Text);
+            dishes[current].updateIngredients(servings);
+            dishes[current].addPrefix();
             populateListView(current);
         }
 
-        private void changeData(int dishNumber)
-        {
-            // change according to the amount of people
-            // change cost
-            // change weight
-            double cost;
-            double weight;
-            double people = double.Parse(textBoxInput.Text);
-            for (int i = 0; i < dishes[dishNumber].ingredients.Count; i++)
-            {
-                dishes[dishNumber].ingredients[i].cost = dishes[dishNumber].ingredients[i].cost / ;
-                    //(double.Parse(dishes[dishNumber].ingredients[i].cost) / (22 / double.Parse(textBoxInput.Text))).ToString();
-            }
-        }
-
-        private void addPrefix()
-        {
-            foreach(Ingredient item in groceries)
-            {
-                item.weight += item.metric;
-                item.cost = "$" + item.cost;
-            }
-        }
         private void setPeople()
         {
             textBoxInput.Text = "23";
@@ -215,28 +189,11 @@ namespace CheeBogGrocery
                 Dish dish = new Dish();
                 dishes.Add(dish);
             }
-
             dishes[0].name = "CHICKEN POPCORN";
-            List<Ingredient> chickenPops = new List<Ingredient>();
-            chickenPops.Add(getIngredient("Chicken Thigh"));
-            chickenPops.Add(getIngredient("Ginger"));
-            chickenPops.Add(getIngredient("Garlic Bag"));
-            chickenPops.Add(getIngredient("Tanaka Cooking Sake"));
-            chickenPops.Add(getIngredient("Raw Sugar"));
-            chickenPops.Add(getIngredient("Potato Starch"));
-            chickenPops.Add(getIngredient("Cooking Salt"));
-            chickenPops.Add(getIngredient("Trumps Black Pepper"));
-
-            // Dish update example
-            dishes[0].ingredients[0].weight = "1";
-            dishes[0].ingredients[1].weight = "125";
-            dishes[0].ingredients[2].weight = "500";
-            dishes[0].ingredients[3].weight = "500";
-            dishes[0].ingredients[4].weight = "2";
-            dishes[0].ingredients[5].weight = "500";
-            dishes[0].ingredients[6].weight = "2";
-            dishes[0].ingredients[7].weight = "1";
-            dishes[0].ingredients = chickenPops;
+            dishes[0].ingredients = resetChickenPops();
+            dishes[0].servings = 10;
+            dishes[0].updateIngredients(10);
+            dishes[0].addPrefix();
 
             dishes[1].name = "CHICKEN SKEWER";
             List<Ingredient> chickenSkewer = new List<Ingredient>();
@@ -334,6 +291,40 @@ namespace CheeBogGrocery
         {
            var index = groceries.FirstOrDefault(o => o.name == name);
            return index;
+        }
+        private List<Ingredient> resetChickenPops()
+        {
+            List<Ingredient> chickenPops = new List<Ingredient>();
+            chickenPops.Add(getIngredient("Chicken Thigh"));
+            chickenPops.Add(getIngredient("Ginger"));
+            chickenPops.Add(getIngredient("Garlic Bag"));
+            chickenPops.Add(getIngredient("Tanaka Cooking Sake"));
+            chickenPops.Add(getIngredient("Raw Sugar"));
+            chickenPops.Add(getIngredient("Potato Starch"));
+            chickenPops.Add(getIngredient("Cooking Salt"));
+            chickenPops.Add(getIngredient("Trumps Black Pepper"));
+
+            // Dish update example
+            chickenPops[0].weight = "1";
+            chickenPops[1].weight = "125";
+            chickenPops[2].weight = "500";
+            chickenPops[3].weight = "500";
+            chickenPops[4].weight = "2";
+            chickenPops[5].weight = "500";
+            chickenPops[6].weight = "2";
+            chickenPops[7].weight = "1";
+
+            // Change cost
+            chickenPops[0].cost = "5.09";
+            chickenPops[1].cost = "5.37";
+            chickenPops[2].cost = "1.49";
+            chickenPops[3].cost = "2.79";
+            chickenPops[4].cost = "6.20";
+            chickenPops[5].cost = "4.79";
+            chickenPops[6].cost = "1.52";
+            chickenPops[7].cost = "13.86";
+            
+            return chickenPops;
         }
 
         private Ingredient createIngredients(string name, string weight, string cost, string location, string metric)
