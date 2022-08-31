@@ -9,8 +9,8 @@ namespace CheeBogGrocery
     internal class Ingredient
     {
         public string name { get; set; }
-        public double weight { get; set; }
-        public double cost { get; set; }
+        public string weight { get; set; }
+        public string cost { get; set; }
         public string location { get; set; }
         public string metric { get; set; }
 

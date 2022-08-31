@@ -25,56 +25,62 @@ namespace CheeBogGrocery
     {
         private List<Ingredient> groceries = new List<Ingredient>();
         private List<Dish> dishes = new List<Dish>();
+        private bool loaded1, loaded2, loaded3, loaded4, loaded5, loaded6, loaded7, loaded8 = false;
+        private int current = 0;
 
         public MainWindow()
         {
             InitializeComponent();
-            groceries.Add(createIngredients("Baking Soda", 500, 2.49, "Spudshed", "g"));
-            groceries.Add(createIngredients("Bao(pcs)", 6, 3.49, "Spudshed", "g"));
-            groceries.Add(createIngredients("Beer Batter Chips", 750, 3.99, "NP SuperMarket", "g"));
-            groceries.Add(createIngredients("Cayenne Pepper", 50, 2.00, "MCQ SuperMarket", "g"));
-            groceries.Add(createIngredients("Chicken Breast", 1, 6.99, "Effie's Gourmet", "kg"));
-            groceries.Add(createIngredients("Chicken Salt", 1, 9.17, "Campbells", "kg"));
-            groceries.Add(createIngredients("Chicken Thigh", 1, 10.49, "Effie's Gourmet", "kg"));
-            groceries.Add(createIngredients("Condensed Milk", 397, 3.49, "Spudshed", "g"));
-            groceries.Add(createIngredients("Cooking Salt", 2, 1.52, "Campbells", "kg"));
-            groceries.Add(createIngredients("Coriander", 9, 1.79, "MCQ SuperMarket", "stems"));
-            groceries.Add(createIngredients("Cumin Powder", 100, 1.99, "MCQ SuperMarket", "g"));
-            groceries.Add(createIngredients("Essentials Chef Canola Oil", 20, 55.89, "Campbells", "l"));
-            groceries.Add(createIngredients("Essentials Chef Tomato Sauce", 4, 6.34, "Campbells", "l"));
-            groceries.Add(createIngredients("Garlic Bag", 500, 2.99, "MCQ SuperMarket", "g"));
-            groceries.Add(createIngredients("Ginger", 1, 42.95, "MCQ SuperMarket", "kg"));
-            groceries.Add(createIngredients("Graham Crackers", 28, 11.49, "NP SuperMarket", "pcs"));
-            groceries.Add(createIngredients("Green Chilli", 1, 7.99, "MCQ SuperMarket", "kg"));
-            groceries.Add(createIngredients("Honey", 1, 7.99, "Spudshed", "kg"));
-            groceries.Add(createIngredients("KewPie Mayonnaise", 1, 14.49, "NP SuperMarket", "kg"));
-            groceries.Add(createIngredients("Kikkoman Soy Sauce", 1, 8.75, "Campbells", "l"));
-            groceries.Add(createIngredients("Lemon Juice", 250, 1.17, "Coles", "ml"));
-            groceries.Add(createIngredients("Lime", 1, 5.99, "MCQ SuperMarket", "kg"));
-            groceries.Add(createIngredients("MasterFoods Soy Sauce", 3, 17.67, "Campbells", "l"));
-            groceries.Add(createIngredients("Onion", 2, 1.49, "MCQ SuperMarket", "kg"));
-            groceries.Add(createIngredients("Pork", 1, 8.00, "Continental Meats", "kg"));
-            groceries.Add(createIngredients("Potato Starch", 500, 4.79, "NP SuperMarket", "g"));
-            groceries.Add(createIngredients("Prawns King Raw", 1, 20.99, "Effie's Gourmet", "kg"));
-            groceries.Add(createIngredients("Raw Sugar", 2, 3.10, "Campbells", "kg"));
-            groceries.Add(createIngredients("Red Chilli Big", 1, 13.95, "MCQ SuperMarket", "kg"));
-            groceries.Add(createIngredients("Salted Butter", 5, 62.28, "Campbells", "kg"));
-            groceries.Add(createIngredients("Seasoning Soy", 500, 9.95, "Coles", "ml"));
-            groceries.Add(createIngredients("Sesame Seed", 1, 6.47, "Campbells", "kg"));
-            groceries.Add(createIngredients("Smoked Paprika", 140, 5.80, "MCQ SuperMarket", "g"));
-            groceries.Add(createIngredients("Sour Cream Light", 1, 5.69, "Spudshed", "kg"));
-            groceries.Add(createIngredients("Sprite", 2, 3.49, "Spudshed", "l"));
-            groceries.Add(createIngredients("Sriracha Sauce", 500, 3.29, "Spudshed", "ml"));
-            groceries.Add(createIngredients("Tanaka Cooking Sake", 500, 2.79, "MCQ SuperMarket", "ml"));
-            groceries.Add(createIngredients("Thickened Cream", 1.2, 6.80, "Spudshed", "l"));
-            groceries.Add(createIngredients("Tomato", 1, 2.99, "MCQ SuperMarket", "kg"));
-            groceries.Add(createIngredients("Trumps Black Pepper", 1, 13.86, "Campbells", "kg"));
-            groceries.Add(createIngredients("Vinegar", 2, 1.99, "Spudshed", "l"));
-            groceries.Add(createIngredients("Whipping Cream", 1, 4.99, "Spudshed", "l"));
-            groceries.Add(createIngredients("Wonton Skin", 500, 3.99, "NP SuperMarket", "g"));
+            #region Database
+            groceries.Add(createIngredients("Baking Soda", "500", "2.49", "Spudshed", "g"));
+            groceries.Add(createIngredients("Bao(pcs)", "6", "3.49", "Spudshed", "g"));
+            groceries.Add(createIngredients("Beer Batter Chips", "750", "3.99", "NP SuperMarket", "g"));
+            groceries.Add(createIngredients("Cayenne Pepper", "50", "2.00", "MCQ SuperMarket", "g"));
+            groceries.Add(createIngredients("Chicken Breast", "1", "6.99", "Effie's Gourmet", "kg"));
+            groceries.Add(createIngredients("Chicken Salt", "1", "9.17", "Campbells", "kg"));
+            groceries.Add(createIngredients("Chicken Thigh", "1", "10.49", "Effie's Gourmet", "kg"));
+            groceries.Add(createIngredients("Condensed Milk", "397", "3.49", "Spudshed", "g"));
+            groceries.Add(createIngredients("Cooking Salt", "2", "1.52", "Campbells", "kg"));
+            groceries.Add(createIngredients("Coriander", "9", "1.79", "MCQ SuperMarket", "stems"));
+            groceries.Add(createIngredients("Cumin Powder", "100", "1.99", "MCQ SuperMarket", "g"));
+            groceries.Add(createIngredients("Essentials Chef Canola Oil", "20", "55.89", "Campbells", "l"));
+            groceries.Add(createIngredients("Essentials Chef Tomato Sauce", "4", "6.34", "Campbells", "l"));
+            groceries.Add(createIngredients("Garlic Bag", "500", "2.99", "MCQ SuperMarket", "g"));
+            groceries.Add(createIngredients("Ginger", "1", "42.95", "MCQ SuperMarket", "kg"));
+            groceries.Add(createIngredients("Graham Crackers", "28", "11.49", "NP SuperMarket", "pcs"));
+            groceries.Add(createIngredients("Green Chilli", "1", "7.99", "MCQ SuperMarket", "kg"));
+            groceries.Add(createIngredients("Honey", "1", "7.99", "Spudshed", "kg"));
+            groceries.Add(createIngredients("KewPie Mayonnaise", "1", "14.49", "NP SuperMarket", "kg"));
+            groceries.Add(createIngredients("Kikkoman Soy Sauce", "1", "8.75", "Campbells", "l"));
+            groceries.Add(createIngredients("Lemon Juice", "250", "1.17", "Coles", "ml"));
+            groceries.Add(createIngredients("Lime", "1", "5.99", "MCQ SuperMarket", "kg"));
+            groceries.Add(createIngredients("MasterFoods Soy Sauce", "3", "17.67", "Campbells", "l"));
+            groceries.Add(createIngredients("Onion", "2", "1.49", "MCQ SuperMarket", "kg"));
+            groceries.Add(createIngredients("Pork", "1", "8.00", "Continental Meats", "kg"));
+            groceries.Add(createIngredients("Potato Starch", "500", "4.79", "NP SuperMarket", "g"));
+            groceries.Add(createIngredients("Prawns King Raw", "1", "20.99", "Effie's Gourmet", "kg"));
+            groceries.Add(createIngredients("Raw Sugar", "2", "3.10", "Campbells", "kg"));
+            groceries.Add(createIngredients("Red Chilli Big", "1", "13.95", "MCQ SuperMarket", "kg"));
+            groceries.Add(createIngredients("Salted Butter", "5", "62.28", "Campbells", "kg"));
+            groceries.Add(createIngredients("Seasoning Soy", "500", "9.95", "Coles", "ml"));
+            groceries.Add(createIngredients("Sesame Seed", "1", "6.47", "Campbells", "kg"));
+            groceries.Add(createIngredients("Smoked Paprika", "140", "5.80", "MCQ SuperMarket", "g"));
+            groceries.Add(createIngredients("Sour Cream Light", "1", "5.69", "Spudshed", "kg"));
+            groceries.Add(createIngredients("Sprite", "2", "3.49", "Spudshed", "l"));
+            groceries.Add(createIngredients("Sriracha Sauce", "500", "3.29", "Spudshed", "ml"));
+            groceries.Add(createIngredients("Tanaka Cooking Sake", "500", "2.79", "MCQ SuperMarket", "ml"));
+            groceries.Add(createIngredients("Thickened Cream", "1.2", "6.80", "Spudshed", "l"));
+            groceries.Add(createIngredients("Tomato", "1", "2.99", "MCQ SuperMarket", "kg"));
+            groceries.Add(createIngredients("Trumps Black Pepper", "1", "13.86", "Campbells", "kg"));
+            groceries.Add(createIngredients("Vinegar", "2", "1.99", "Spudshed", "l"));
+            groceries.Add(createIngredients("Whipping Cream", "1", "4.99", "Spudshed", "l"));
+            groceries.Add(createIngredients("Wonton Skin", "500", "3.99", "NP SuperMarket", "g"));
+            addPrefix();
+            #endregion
             populateData();
             setMenuNames();
-            textBoxHeadingTitle.Text = dishes[0].name;
+            populateListView(0);
+            setPeople();
         }
 
         private void buttonClose_Click(object sender, RoutedEventArgs e)
@@ -89,49 +95,121 @@ namespace CheeBogGrocery
 
         private void buttonMenu1_Click(object sender, RoutedEventArgs e)
         {
+            populateListView(0);
             setHeading(0);
+            current = 0;
         }
 
         private void buttonMenu2_Click(object sender, RoutedEventArgs e)
         {
+            populateListView(1);
             setHeading(1);
+            current = 1;
         }
 
         private void buttonMenu3_Click(object sender, RoutedEventArgs e)
         {
+            populateListView(2);
             setHeading(2);
+            current = 2;
+
 
         }
-
         private void buttonMenu4_Click(object sender, RoutedEventArgs e)
         {
+            populateListView(3);
             setHeading(3);
-        }
+            current = 3;
 
+        }
         private void buttonMenu5_Click(object sender, RoutedEventArgs e)
         {
+            populateListView(4);
             setHeading(4);
-        }
+            current = 4;
 
+        }
         private void buttonMenu6_Click(object sender, RoutedEventArgs e)
         {
+            populateListView(5);
             setHeading(5);
-        }
+            current = 5;
 
+        }
         private void buttonMenu7_Click(object sender, RoutedEventArgs e)
         {
+            populateListView(6);
             setHeading(6);
-        }
-        // button will populate ingredients
-        // change heading text
-        private void buttonMenu8_Click(object sender, RoutedEventArgs e)
-        {
-            setHeading(7);
+            current = 6;
+
         }
 
+        private void buttonMenu8_Click(object sender, RoutedEventArgs e)
+        {
+            populateListView(7);
+            setHeading(7);
+            current = 7;
+        }
+        private void listView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+        private void textBoxInput_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key >= Key.D0 && e.Key <= Key.D9 || e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9 || e.Key == Key.Enter)
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
+
+            if (e.Key == Key.Enter)
+            {
+                changeData(current);
+            }
+        }
         private void setHeading(int dishNumber)
         {
             textBoxHeadingTitle.Text = dishes[dishNumber].name;
+        }
+        // button will populate ingredients
+        // change heading text
+        private void populateListView(int dishNumber)
+        {
+            listView.Items.Clear();
+            for (int i = 0; i < dishes[dishNumber].ingredients.Count; i++)
+            {
+                listView.Items.Add(dishes[dishNumber].ingredients[i]);
+            }
+        }
+
+        private void changeData(int dishNumber)
+        {
+            // change according to the amount of people
+            // change cost
+            // change weight
+            double cost;
+            double weight;
+            double people = double.Parse(textBoxInput.Text);
+            for (int i = 0; i < dishes[dishNumber].ingredients.Count; i++)
+            {
+                dishes[dishNumber].ingredients[i].cost = (double.Parse(dishes[dishNumber].ingredients[i].cost) / (22 / double.Parse(textBoxInput.Text))).ToString();
+            }
+        }
+
+        private void addPrefix()
+        {
+            foreach(Ingredient item in groceries)
+            {
+                item.weight += item.metric;
+                item.cost = "$" + item.cost;
+            }
+        }
+        private void setPeople()
+        {
+            textBoxInput.Text = "23";
         }
         #region Populate
         private void populateData()
@@ -162,7 +240,7 @@ namespace CheeBogGrocery
             chickenSkewer.Add(getIngredient("Cooking Salt"));
             chickenSkewer.Add(getIngredient("Essentials Chef Tomato Sauce"));
             chickenSkewer.Add(getIngredient("Garlic Bag"));
-            chickenSkewer.Add(getIngredient("Masterfoods Soy Sauce"));
+            chickenSkewer.Add(getIngredient("MasterFoods Soy Sauce"));
             chickenSkewer.Add(getIngredient("Raw Sugar"));
             chickenSkewer.Add(getIngredient("Sprite"));
             chickenSkewer.Add(getIngredient("Trumps Black Pepper"));
@@ -183,7 +261,7 @@ namespace CheeBogGrocery
             honeyChickenBao.Add(getIngredient("Garlic Bag"));
             honeyChickenBao.Add(getIngredient("Ginger"));
             honeyChickenBao.Add(getIngredient("Honey"));
-            honeyChickenBao.Add(getIngredient("Kewpie Mayonnaise"));
+            honeyChickenBao.Add(getIngredient("KewPie Mayonnaise"));
             honeyChickenBao.Add(getIngredient("Potato Starch"));
             honeyChickenBao.Add(getIngredient("Raw Sugar"));
             honeyChickenBao.Add(getIngredient("Salted Butter"));
@@ -198,7 +276,7 @@ namespace CheeBogGrocery
             honeyChickenPop.Add(getIngredient("Garlic Bag"));
             honeyChickenPop.Add(getIngredient("Ginger"));
             honeyChickenPop.Add(getIngredient("Honey"));
-            honeyChickenPop.Add(getIngredient("Kewpie Mayonnaise"));
+            honeyChickenPop.Add(getIngredient("KewPie Mayonnaise"));
             honeyChickenPop.Add(getIngredient("Potato Starch"));
             honeyChickenPop.Add(getIngredient("Raw Sugar"));
             honeyChickenPop.Add(getIngredient("Salted Butter"));
@@ -222,7 +300,7 @@ namespace CheeBogGrocery
 
             dishes[6].name = "PORK SKEWER";
             List<Ingredient> porkSkewer = new List<Ingredient>();
-            porkSkewer.Add(getIngredient("Bakiong Soda"));
+            porkSkewer.Add(getIngredient("Baking Soda"));
             porkSkewer.Add(getIngredient("Cooking Salt"));
             porkSkewer.Add(getIngredient("Essentials Chef Tomato Sauce"));
             porkSkewer.Add(getIngredient("Garlic Bag"));
@@ -253,7 +331,7 @@ namespace CheeBogGrocery
            return index;
         }
 
-        private Ingredient createIngredients(string name, double weight, double cost, string location, string metric)
+        private Ingredient createIngredients(string name, string weight, string cost, string location, string metric)
         {
             Ingredient ingredient = new Ingredient();
             ingredient.name = name;

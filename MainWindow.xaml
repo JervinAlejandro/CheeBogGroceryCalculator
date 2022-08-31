@@ -379,7 +379,8 @@
                                          BorderThickness="0"
                                          Margin="0,15,0,15"
                                          FontSize="20"
-                                         x:Name="textBoxInput">
+                                         x:Name="textBoxInput"
+                                         KeyDown="textBoxInput_KeyDown">
                                     <TextBox.Resources>
                                         <Style TargetType="Border">
                                             <Setter Property="CornerRadius" Value="10"/>
@@ -405,12 +406,12 @@
                                 Background="#363645"
                                 CornerRadius="10">
                             <Grid>
-                                <!--<Grid.RowDefinitions>
+                                <Grid.RowDefinitions>
                                     <RowDefinition Height="57*"/>
                                     <RowDefinition Height="627*"/>
-                                </Grid.RowDefinitions>-->
+                                </Grid.RowDefinitions>
                                 
-                                <!--<Border BorderBrush="#FFFFFF"
+                                <Border BorderBrush="#FFFFFF"
                                         BorderThickness="0,0,0,1"
                                         Margin="50,0,50,0">
                                     <Grid>
@@ -422,7 +423,7 @@
                                         </Grid.ColumnDefinitions>
 
 
-                                        --><!--Heading--><!--
+                                        <!--Heading DONT DELETE!-->
                                         <Viewbox Grid.Column="0"
                                             HorizontalAlignment="Center">
                                             <TextBlock Foreground="White"
@@ -463,15 +464,22 @@
                                             </TextBlock>
                                         </Viewbox>
                                     </Grid>
-                                </Border>-->
-                                <ListView Grid.Row="0"
+                                </Border>
+                                <ListView Grid.Row="1"
                                           Background="Transparent"
                                           BorderThickness="0"
-                                          Margin="50,0,50,0">
+                                          Margin="50,15,50,0"
+                                          x:Name="listView"
+                                          Foreground="White"
+                                          FontSize="15"
+                                          HorizontalContentAlignment="Center"
+                                          VerticalContentAlignment="Center"
+                                          MouseDoubleClick="listView_MouseDoubleClick">
                                     <ListView.Resources>
                                         <Style TargetType="GridViewColumnHeader">
                                             <Setter Property="Background" Value="Transparent" />
                                             <Setter Property="Foreground" Value="White"/>
+                                            <Setter Property="Visibility" Value="Collapsed"/>
                                         </Style>
                                     </ListView.Resources>
                                     <ListView.View>
