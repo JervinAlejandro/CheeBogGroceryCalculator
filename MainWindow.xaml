@@ -143,7 +143,8 @@
                                     Foreground="White"
                                     FontFamily="Segoe UI"
                                     FontWeight="Bold"
-                                    x:Name="buttonMenu1">
+                                    x:Name="buttonMenu1"
+                                    Click="buttonMenu1_Click">
                                 <Button.Resources>
                                     <Style TargetType="Border">
                                         <Setter Property="CornerRadius" 
@@ -161,7 +162,8 @@
                                     Foreground="White"
                                     FontFamily="Segoe UI"
                                     FontWeight="Bold"
-                                    x:Name="buttonMenu2">
+                                    x:Name="buttonMenu2"
+                                    Click="buttonMenu2_Click">
                                 <Button.Resources>
                                     <Style TargetType="Border">
                                         <Setter Property="CornerRadius" 
@@ -179,7 +181,8 @@
                                     Foreground="White"
                                     FontFamily="Segoe UI"
                                     FontWeight="Bold"
-                                    x:Name="buttonMenu3">
+                                    x:Name="buttonMenu3"
+                                    Click="buttonMenu3_Click">
 
                                 <Button.Resources>
                                     <Style TargetType="Border">
@@ -198,7 +201,8 @@
                                     Foreground="White"
                                     FontFamily="Segoe UI"
                                     FontWeight="Bold"
-                                    x:Name="buttonMenu4">
+                                    x:Name="buttonMenu4"
+                                    Click="buttonMenu4_Click">
 
                                 <Button.Resources>
                                     <Style TargetType="Border">
@@ -217,7 +221,8 @@
                                     Foreground="White"
                                     FontFamily="Segoe UI"
                                     FontWeight="Bold"
-                                    x:Name="buttonMenu5">
+                                    x:Name="buttonMenu5"
+                                    Click="buttonMenu5_Click">
 
                                 <Button.Resources>
                                     <Style TargetType="Border">
@@ -236,7 +241,8 @@
                                     Foreground="White"
                                     FontFamily="Segoe UI"
                                     FontWeight="Bold"
-                                    x:Name="buttonMenu6">
+                                    x:Name="buttonMenu6"
+                                    Click="buttonMenu6_Click">
 
                                 <Button.Resources>
                                     <Style TargetType="Border">
@@ -255,7 +261,8 @@
                                     Foreground="White"
                                     FontFamily="Segoe UI"
                                     FontWeight="Bold"
-                                    x:Name="buttonMenu7">
+                                    x:Name="buttonMenu7"
+                                    Click="buttonMenu7_Click">
 
                                 <Button.Resources>
                                     <Style TargetType="Border">
@@ -274,7 +281,8 @@
                                     Foreground="White"
                                     FontFamily="Segoe UI"
                                     FontWeight="Bold"
-                                    x:Name="buttonMenu8">
+                                    x:Name="buttonMenu8"
+                                    Click="buttonMenu8_Click">
 
                                 <Button.Resources>
                                     <Style TargetType="Border">
@@ -345,12 +353,13 @@
 
                             <!--Heading Title-->
                             <Viewbox Grid.Column="0"
-                                        HorizontalAlignment="Right">
+                                     HorizontalAlignment="Right">
                                 <TextBlock Foreground="#FFC75F"
                                     FontFamily="Segoe UI"
                                     FontWeight="Bold"
                                     Text="TITLE"
-                                    Margin="0,0,5,0">
+                                    Margin="35,0,5,0"
+                                    x:Name="textBoxHeadingTitle">
                                 </TextBlock>
                             </Viewbox>
 
