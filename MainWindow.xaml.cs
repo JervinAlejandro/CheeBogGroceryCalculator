@@ -104,16 +104,6 @@ namespace CheeBogGrocery
             chickenPops.Add(getIngredient("Potato Starch"));
             chickenPops.Add(getIngredient("Cooking Salt"));
             chickenPops.Add(getIngredient("Trumps Black Pepper"));
-
-
-            chickenPops.Add(groceries[8]);
-            chickenPops.Add(groceries[13]);
-            chickenPops.Add(groceries[14]);
-            chickenPops.Add(groceries[22]);
-            chickenPops.Add(groceries[25]);
-            chickenPops.Add(groceries[27]);
-            chickenPops.Add(groceries[36]);
-            chickenPops.Add(groceries[39]);
             dishes[0].ingredients = chickenPops;
 
 
