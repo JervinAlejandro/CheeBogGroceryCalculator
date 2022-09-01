@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Transactions;
 
 namespace CheeBogGrocery
 {
@@ -17,15 +19,25 @@ namespace CheeBogGrocery
             double weight;
             double total;
             double cost;
-            for(int i = 0; i < ingredients.Count; i++)
-            {
-                weight = double.Parse(ingredients[i].weight);
-                total = (serve / servings) * weight;
-                ingredients[i].weight = (Math.Round(total,2)).ToString();
 
-                cost = double.Parse(ingredients[i].cost);
+            foreach (Ingredient item in ingredients)
+            {
+                weight = double.Parse(item.weight);
+                total = (serve / servings) * weight;
+                total = checkMetric(item, total);
+                if(item.metric.Equals("stems") || item.metric.Equals("pcs"))
+                {
+                    item.weight = (Math.Round(total, 0)).ToString();
+
+                }
+                else
+                {
+                    item.weight = (Math.Round(total, 2)).ToString();
+                }
+
+                cost = double.Parse(item.cost);
                 total = (serve / servings) * cost;
-                ingredients[i].cost = (Math.Round(total,2)).ToString();
+                item.cost = (Math.Round(total, 2)).ToString();
             }
         }
 
@@ -38,17 +50,35 @@ namespace CheeBogGrocery
             }
         }
 
-        public void checkMetric()
+        public double checkMetric(Ingredient item, double total)
         {
-            foreach (Ingredient item in ingredients)
+            if(total >= 1000)
             {
-                if(double.Parse(item.weight) > 1000)
+                switch (item.metric)
                 {
-                    switch (item.metric)
-                    {
-                    }
+                    case "g":
+                        item.metric = "kg";
+                        break;
+                    case "ml":
+                        item.metric = "l";
+                        break;
+
+                }
+                total = total / 1000;
+            }
+            else
+            {
+                switch (item.metric)
+                {
+                    case "kg":
+                        item.metric = "g";
+                        break;
+                    case "l":
+                        item.metric = "ml";
+                        break;
                 }
             }
+            return total;
         }
 
     }

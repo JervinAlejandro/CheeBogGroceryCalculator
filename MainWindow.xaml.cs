@@ -250,7 +250,6 @@ namespace CheeBogGrocery
             dishes[5].updateIngredients(24);
             dishes[5].addPrefix();
 
-
             dishes[6].name = "PORK SKEWER";
             dishes[6].ingredients = resetPorkSkewer();
             dishes[6].servings = 50;
