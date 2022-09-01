@@ -25,7 +25,7 @@ namespace CheeBogGrocery
     {
         private List<Ingredient> groceries = new List<Ingredient>();
         private List<Dish> dishes = new List<Dish>();
-        private int current = 0;
+        private int current = -1;
 
         public MainWindow()
         {
@@ -170,11 +170,40 @@ namespace CheeBogGrocery
 
         private void buttonDisplay_Click(object sender, RoutedEventArgs e)
         {
-            dishes[current].ingredients = resetChickenPops(); // Switch case this to resetDifferentDish
-            int servings = int.Parse(textBoxInput.Text);
-            dishes[current].updateIngredients(servings);
-            dishes[current].addPrefix();
-            populateListView(current);
+            if(current >= 0)
+            {
+                switch (current)
+                {
+                    case 0:
+                        dishes[0].ingredients = resetChickenPops(); // Switch case this to resetDifferentDish
+                        break;
+                    case 1:
+                        dishes[1].ingredients = resetChickenSkewer();
+                        break;
+                    case 2:
+                        dishes[2].ingredients = resetGrahamCake();
+                        break;
+                    case 3:
+                        dishes[3].ingredients = resetHoneyChickenBao();
+                        break;
+                    case 4:
+                        dishes[4].ingredients = resetChickenPops();
+                        break;
+                    case 5:
+                        dishes[5].ingredients = resetChickenPops();
+                        break;
+                    case 6:
+                        dishes[6].ingredients = resetChickenPops();
+                        break;
+                    case 7:
+                        dishes[7].ingredients = resetChickenPops();
+                        break;
+                }
+                int servings = int.Parse(textBoxInput.Text);
+                dishes[current].updateIngredients(servings);
+                dishes[current].addPrefix();
+                populateListView(current);
+            }
         }
 
         #region Populate
