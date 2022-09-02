@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CheeBogGrocery
 {
-    internal class Ingredient
+    internal class Ingredient : ICloneable
     {
         public string name { get; set; }
         public string weight { get; set; }
@@ -14,5 +14,9 @@ namespace CheeBogGrocery
         public string location { get; set; }
         public string metric { get; set; }
 
+        public object Clone()
+        {
+            return this.MemberwiseClone();
+        }
     }
 }

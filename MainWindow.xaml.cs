@@ -139,7 +139,12 @@ namespace CheeBogGrocery
         }
         private void listView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-
+            string text = "";
+            foreach(Ingredient item in dishes[current].ingredients)
+            {
+                text += item.name + ", " + item.weight + ", " + item.cost + "\n";
+            }
+            Clipboard.SetText(text);
         }
         private void textBoxInput_KeyDown(object sender, KeyEventArgs e)
         {
@@ -170,7 +175,7 @@ namespace CheeBogGrocery
 
         private void buttonDisplay_Click(object sender, RoutedEventArgs e)
         {
-            if(current >= 0)
+            if (current >= 0)
             {
                 switch (current)
                 {
@@ -190,13 +195,13 @@ namespace CheeBogGrocery
                         dishes[4].ingredients = resetChickenPops();
                         break;
                     case 5:
-                        dishes[5].ingredients = resetChickenPops();
+                        dishes[5].ingredients = resetPorkBao();
                         break;
                     case 6:
-                        dishes[6].ingredients = resetChickenPops();
+                        dishes[6].ingredients = resetPorkSkewer();
                         break;
                     case 7:
-                        dishes[7].ingredients = resetChickenPops();
+                        dishes[7].ingredients = resetPrawnNachos();
                         break;
                 }
                 int servings = int.Parse(textBoxInput.Text);
@@ -222,20 +227,20 @@ namespace CheeBogGrocery
 
             dishes[1].name = "CHICKEN SKEWER";
             dishes[1].ingredients = resetChickenSkewer();
-            dishes[1].servings = 52;
-            dishes[1].updateIngredients(52);
+            dishes[1].servings = 50;
+            dishes[1].updateIngredients(50);
             dishes[1].addPrefix();
 
             dishes[2].name = "GRAHAM CAKE";
             dishes[2].ingredients = resetGrahamCake();
-            dishes[2].servings = 12;
-            dishes[2].updateIngredients(12);
+            dishes[2].servings = 11;
+            dishes[2].updateIngredients(11);
             dishes[2].addPrefix();
 
             dishes[3].name = "HONEY CHICKEN BAO";
             dishes[3].ingredients = resetHoneyChickenBao();
-            dishes[3].servings = 15;
-            dishes[3].updateIngredients(15);
+            dishes[3].servings = 22;
+            dishes[3].updateIngredients(22);
             dishes[3].addPrefix();
 
             dishes[4].name = "HONEY CHICKEN POP";
@@ -246,8 +251,8 @@ namespace CheeBogGrocery
 
             dishes[5].name = "PORK BAO";
             dishes[5].ingredients = resetPorkBao();
-            dishes[5].servings = 24;
-            dishes[5].updateIngredients(24);
+            dishes[5].servings = 60;
+            dishes[5].updateIngredients(60);
             dishes[5].addPrefix();
 
             dishes[6].name = "PORK SKEWER";
@@ -265,8 +270,8 @@ namespace CheeBogGrocery
 
         private Ingredient getIngredient(string name)
         {
-           var index = groceries.FirstOrDefault(o => o.name == name);
-           return index;
+            var index = groceries.FirstOrDefault(o => o.name == name);
+            return (Ingredient)index.Clone();
         }
         private List<Ingredient> resetChickenPops()
         {
@@ -274,6 +279,7 @@ namespace CheeBogGrocery
             chickenPops.Add(getIngredient("Chicken Thigh"));
             chickenPops.Add(getIngredient("Ginger"));
             chickenPops.Add(getIngredient("Garlic Bag"));
+            chickenPops.Add(getIngredient("MasterFoods Soy Sauce"));
             chickenPops.Add(getIngredient("Tanaka Cooking Sake"));
             chickenPops.Add(getIngredient("Raw Sugar"));
             chickenPops.Add(getIngredient("Potato Starch"));
@@ -284,23 +290,17 @@ namespace CheeBogGrocery
             chickenPops[0].weight = "1000";
             chickenPops[1].weight = "62.5";
             chickenPops[2].weight = "24";
-            chickenPops[3].weight = "44";
-            chickenPops[4].weight = "12";
-            chickenPops[5].weight = "190";
-            chickenPops[6].weight = "3";
-            chickenPops[7].weight = "1.2";
+            chickenPops[3].weight = "80";
+            chickenPops[4].weight = "83";
+            chickenPops[5].weight = "160";
+            chickenPops[6].weight = "190";
+            chickenPops[7].weight = "17";
+            chickenPops[8].weight = "7";
 
             // Change cost
-            chickenPops[0].cost = "5.09";
-            chickenPops[1].cost = "2.69";
-            chickenPops[2].cost = "0.70";
-            chickenPops[3].cost = "0.25";
-            chickenPops[4].cost = "0.04";
-            chickenPops[5].cost = "1.82";
-            chickenPops[6].cost = "0.002";
-            chickenPops[7].cost = "0.02";
-            chickenPops.Sort();
+            setCost(chickenPops, 9);
 
+            //chickenPops.Sort();
             return chickenPops;
         }
 
@@ -318,30 +318,22 @@ namespace CheeBogGrocery
             chickenSkewer.Add(getIngredient("Trumps Black Pepper"));
 
             // Dish update example
-            chickenSkewer[0].weight = "29";
-            chickenSkewer[1].weight = "5";
+            chickenSkewer[0].weight = "43";
+            chickenSkewer[1].weight = "5000";
             chickenSkewer[2].weight = "576";
             chickenSkewer[3].weight = "472";
             chickenSkewer[4].weight = "20";
             chickenSkewer[5].weight = "480";
-            chickenSkewer[6].weight = "1200";
+            chickenSkewer[6].weight = "1000";
             chickenSkewer[7].weight = "1400";
             chickenSkewer[8].weight = "234";
 
             // Change cost
-            chickenSkewer[0].cost = "0.10";
-            chickenSkewer[1].cost = "48.93";
-            chickenSkewer[2].cost = "0.48";
-            chickenSkewer[3].cost = "0.75";
-            chickenSkewer[4].cost = "0.06";
-            chickenSkewer[5].cost = "2.83";
-            chickenSkewer[6].cost = "3.72";
-            chickenSkewer[7].cost = "2.44";
-            chickenSkewer[8].cost = "3.24";
+            setCost(chickenSkewer, 9);
 
             return chickenSkewer;
         }
-        
+
         private List<Ingredient> resetGrahamCake()
         {
             List<Ingredient> grahamCake = new List<Ingredient>();
@@ -350,14 +342,12 @@ namespace CheeBogGrocery
             grahamCake.Add(getIngredient("Thickened Cream"));
 
             // Dish update example
-            grahamCake[0].weight = "397";
-            grahamCake[1].weight = "13";
+            grahamCake[0].weight = "596";
+            grahamCake[1].weight = "12";
             grahamCake[2].weight = "1200";
 
             // Change cost
-            grahamCake[0].cost = "1.50";
-            grahamCake[1].cost = "5.53";
-            grahamCake[2].cost = "6.80";
+            setCost(grahamCake, 3);
 
             return grahamCake;
         }
@@ -372,6 +362,7 @@ namespace CheeBogGrocery
             honeyChickenBao.Add(getIngredient("Ginger"));
             honeyChickenBao.Add(getIngredient("Honey"));
             honeyChickenBao.Add(getIngredient("KewPie Mayonnaise"));
+            honeyChickenBao.Add(getIngredient("MasterFoods Soy Sauce"));
             honeyChickenBao.Add(getIngredient("Potato Starch"));
             honeyChickenBao.Add(getIngredient("Raw Sugar"));
             honeyChickenBao.Add(getIngredient("Salted Butter"));
@@ -379,32 +370,22 @@ namespace CheeBogGrocery
             honeyChickenBao.Add(getIngredient("Trumps Black Pepper"));
 
             // Dish update example
-            honeyChickenBao[0].weight = "15";
+            honeyChickenBao[0].weight = "22";
             honeyChickenBao[1].weight = "1000";
-            honeyChickenBao[2].weight = "3";
+            honeyChickenBao[2].weight = "17";
             honeyChickenBao[3].weight = "24";
             honeyChickenBao[4].weight = "62.5";
             honeyChickenBao[5].weight = "42";
             honeyChickenBao[6].weight = "29";
-            honeyChickenBao[7].weight = "190";
-            honeyChickenBao[8].weight = "12";
-            honeyChickenBao[9].weight = "28";
-            honeyChickenBao[10].weight = "44";
-            honeyChickenBao[11].weight = "1.2";
+            honeyChickenBao[7].weight = "83";
+            honeyChickenBao[8].weight = "190";
+            honeyChickenBao[9].weight = "83";
+            honeyChickenBao[10].weight = "28";
+            honeyChickenBao[11].weight = "80";
+            honeyChickenBao[12].weight = "7";
 
             // Change cost
-            honeyChickenBao[0].cost = "8.73";
-            honeyChickenBao[1].cost = "5.09";
-            honeyChickenBao[2].cost = "0.00";
-            honeyChickenBao[3].cost = "0.70";
-            honeyChickenBao[4].cost = "2.69";
-            honeyChickenBao[5].cost = "0.34";
-            honeyChickenBao[6].cost = "0.36";
-            honeyChickenBao[7].cost = "1.82";
-            honeyChickenBao[8].cost = "0.04";
-            honeyChickenBao[9].cost = "0.22";
-            honeyChickenBao[10].cost = "0.25";
-            honeyChickenBao[11].cost = "0.02";
+            setCost(honeyChickenBao, 13);
 
             return honeyChickenBao;
         }
@@ -418,6 +399,7 @@ namespace CheeBogGrocery
             honeyChickenPop.Add(getIngredient("Ginger"));
             honeyChickenPop.Add(getIngredient("Honey"));
             honeyChickenPop.Add(getIngredient("KewPie Mayonnaise"));
+            honeyChickenPop.Add(getIngredient("MasterFoods Soy Sauce"));
             honeyChickenPop.Add(getIngredient("Potato Starch"));
             honeyChickenPop.Add(getIngredient("Raw Sugar"));
             honeyChickenPop.Add(getIngredient("Salted Butter"));
@@ -426,29 +408,20 @@ namespace CheeBogGrocery
 
             // Dish update example
             honeyChickenPop[0].weight = "1000";
-            honeyChickenPop[1].weight = "3";
-            honeyChickenPop[2].weight = "28";
-            honeyChickenPop[3].weight = "24";
-            honeyChickenPop[4].weight = "62.5";
-            honeyChickenPop[5].weight = "42";
-            honeyChickenPop[6].weight = "29";
+            honeyChickenPop[1].weight = "17";
+            honeyChickenPop[2].weight = "24";
+            honeyChickenPop[3].weight = "62.5";
+            honeyChickenPop[4].weight = "42";
+            honeyChickenPop[5].weight = "29";
+            honeyChickenPop[6].weight = "83";
             honeyChickenPop[7].weight = "190";
-            honeyChickenPop[8].weight = "12";
-            honeyChickenPop[9].weight = "44";
-            honeyChickenPop[10].weight = "1.2";
+            honeyChickenPop[8].weight = "160";
+            honeyChickenPop[9].weight = "28";
+            honeyChickenPop[10].weight = "80";
+            honeyChickenPop[11].weight = "7";
 
             // Change cost
-            honeyChickenPop[0].cost = "5.09";
-            honeyChickenPop[1].cost = "0.00";
-            honeyChickenPop[2].cost = "0.22";
-            honeyChickenPop[3].cost = "0.70";
-            honeyChickenPop[4].cost = "2.69";
-            honeyChickenPop[5].cost = "0.34";
-            honeyChickenPop[6].cost = "0.36";
-            honeyChickenPop[7].cost = "1.82";
-            honeyChickenPop[8].cost = "0.04";
-            honeyChickenPop[9].cost = "0.25";
-            honeyChickenPop[10].cost = "0.02";
+            setCost(honeyChickenPop, 12);
 
             return honeyChickenPop;
         }
@@ -468,28 +441,19 @@ namespace CheeBogGrocery
             porkBao.Add(getIngredient("Trumps Black Pepper"));
 
             // Dish update example
-            porkBao[0].weight = "24";
-            porkBao[1].weight = "17";
-            porkBao[2].weight = "43";
-            porkBao[3].weight = "15";
-            porkBao[4].weight = "44";
-            porkBao[5].weight = "480";
+            porkBao[0].weight = "60";
+            porkBao[1].weight = "34";
+            porkBao[2].weight = "73";
+            porkBao[3].weight = "45";
+            porkBao[4].weight = "74";
+            porkBao[5].weight = "487";
             porkBao[6].weight = "2000";
-            porkBao[7].weight = "75";
-            porkBao[8].weight = "45";
-            porkBao[9].weight = "2";
+            porkBao[7].weight = "82";
+            porkBao[8].weight = "75";
+            porkBao[9].weight = "4";
 
             // Change cost
-            porkBao[0].cost = "13.96";
-            porkBao[1].cost = "0.01";
-            porkBao[2].cost = "0.53";
-            porkBao[3].cost = "0.13";
-            porkBao[4].cost = "0.21";
-            porkBao[5].cost = "0.36";
-            porkBao[6].cost = "17.28";
-            porkBao[7].cost = "1.05";
-            porkBao[8].cost = "0.90";
-            porkBao[9].cost = "0.03";
+            setCost(porkBao, 10);
 
             return porkBao;
         }
@@ -512,22 +476,14 @@ namespace CheeBogGrocery
             porkSkewer[1].weight = "576";
             porkSkewer[2].weight = "472";
             porkSkewer[3].weight = "20";
-            porkSkewer[4].weight = "5000";
-            porkSkewer[5].weight = "1000";
-            porkSkewer[6].weight = "480";
+            porkSkewer[4].weight = "480";
+            porkSkewer[5].weight = "5000";
+            porkSkewer[6].weight = "1000";
             porkSkewer[7].weight = "1400";
             porkSkewer[8].weight = "234";
 
             // Change cost
-            porkSkewer[0].cost = "0.15";
-            porkSkewer[1].cost = "0.48";
-            porkSkewer[2].cost = "0.75";
-            porkSkewer[3].cost = "0.06";
-            porkSkewer[4].cost = "40.27";
-            porkSkewer[5].cost = "3.10";
-            porkSkewer[6].cost = "2.83";
-            porkSkewer[7].cost = "2.44";
-            porkSkewer[8].cost = "3.24";
+            setCost(porkSkewer, 9);
 
             return porkSkewer;
         }
@@ -548,23 +504,15 @@ namespace CheeBogGrocery
             prawnNachos[0].weight = "2";
             prawnNachos[1].weight = "9";
             prawnNachos[2].weight = "2";
-            prawnNachos[3].weight = "340";
-            prawnNachos[4].weight = "2000";
+            prawnNachos[3].weight = "285";
+            prawnNachos[4].weight = "1460";
             prawnNachos[5].weight = "2";
-            prawnNachos[6].weight = "425";
+            prawnNachos[6].weight = "250";
             prawnNachos[7].weight = "182";
             prawnNachos[8].weight = "450";
 
             // Change cost
-            prawnNachos[0].cost = "0.08";
-            prawnNachos[1].cost = "1.79";
-            prawnNachos[2].cost = "0.04";
-            prawnNachos[3].cost = "0.25";
-            prawnNachos[4].cost = "41.97";
-            prawnNachos[5].cost = "0.10";
-            prawnNachos[6].cost = "2.42";
-            prawnNachos[7].cost = "1.38";
-            prawnNachos[8].cost = "1.35";
+            setCost(prawnNachos, 9);
 
             return prawnNachos;
         }
@@ -590,6 +538,32 @@ namespace CheeBogGrocery
             buttonMenu6.Content = dishes[5].name;
             buttonMenu7.Content = dishes[6].name;
             buttonMenu8.Content = dishes[7].name;
+        }
+
+        private string calculateCost(List<Ingredient> grocery, int index)
+        {
+            // find the ingredient from the groceries main list using get ingredient and obtain the original cost
+            grocery[index].cost = "0";
+            int groceriesIndex = 0;
+            foreach (Ingredient item in groceries)
+            {
+                if (item.name == grocery[index].name)
+                {
+                    groceriesIndex = groceries.IndexOf(item);
+                }
+            }
+            double cost = double.Parse(groceries[groceriesIndex].cost) / double.Parse(groceries[groceriesIndex].weight);
+            cost *= double.Parse(grocery[index].weight);
+
+            return cost.ToString();
+        }
+
+        private void setCost(List<Ingredient> ingredientsList, int numberLoop)
+        {
+            for(int i = 0; i < numberLoop; i++)
+            {
+                ingredientsList[i].cost = calculateCost(ingredientsList, i);
+            }
         }
         #endregion
     }
