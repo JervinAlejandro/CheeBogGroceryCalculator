@@ -299,6 +299,7 @@ namespace CheeBogGrocery
             chickenPops[5].cost = "1.82";
             chickenPops[6].cost = "0.002";
             chickenPops[7].cost = "0.02";
+            chickenPops.Sort();
 
             return chickenPops;
         }
