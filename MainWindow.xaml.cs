@@ -31,6 +31,7 @@ namespace CheeBogGrocery
         {
             InitializeComponent();
             #region Database
+            // Name, Weight, Price, Location, Metric
             groceries.Add(createIngredients("Baking Soda", "500", "2.49", "Spudshed", "g"));
             groceries.Add(createIngredients("Bao", "6", "3.49", "Spudshed", "pcs"));
             groceries.Add(createIngredients("Beer Batter Chips", "750", "3.99", "NP SuperMarket", "g"));
@@ -74,11 +75,23 @@ namespace CheeBogGrocery
             groceries.Add(createIngredients("Vinegar", "2000", "1.99", "Spudshed", "ml"));
             groceries.Add(createIngredients("Whipping Cream", "1000", "4.99", "Spudshed", "ml"));
             groceries.Add(createIngredients("Wonton Skin", "500", "3.99", "NP SuperMarket", "g"));
+            // New
+            groceries.Add(createIngredients("Chicken Meat Mixed", "2126", "6.36", "MCQ SuperMarket", "g"));
+            groceries.Add(createIngredients("Bay Leaf", "20", "5.90", "Coles", "g"));
+            groceries.Add(createIngredients("Baking Powder", "125", "2.85", "Coles", "g"));
+            groceries.Add(createIngredients("Fresh Milk", "3000", "6.20", "Coles", "l"));
+            groceries.Add(createIngredients("Garlic Powder", "50", "2", "Woolworths", "g"));
+            groceries.Add(createIngredients("Onion Powder", "42", "2.45", "Coles", "g"));
+            groceries.Add(createIngredients("Paprika", "190", "4.10", "Coles", "g"));
+            groceries.Add(createIngredients("Self Raising Flour", "1000", "1.15", "Woolworths", "g"));
+            groceries.Add(createIngredients("Water", "236.59", "0", "Home", "ml"));
+
+
             #endregion
             populateData();
             setMenuNames();
         }
-
+        #region buttons
         private void buttonClose_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
@@ -137,12 +150,13 @@ namespace CheeBogGrocery
             setHeading(7);
             current = 7;
         }
+        #endregion
         private void listView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             string text = "";
             foreach(Ingredient item in dishes[current].ingredients)
             {
-                text += item.name + ", " + item.weight + ", " + item.cost + "\n";
+                text += item.name + ", " + item.weight + ", " + item.cost + ", " + item.location + "\n";
             }
             Clipboard.SetText(text);
         }
@@ -183,7 +197,7 @@ namespace CheeBogGrocery
                         dishes[0].ingredients = resetChickenPops(); // Switch case this to resetDifferentDish
                         break;
                     case 1:
-                        dishes[1].ingredients = resetChickenSkewer();
+                        dishes[1].ingredients = resetFriedChicken();
                         break;
                     case 2:
                         dishes[2].ingredients = resetGrahamCake();
@@ -192,7 +206,7 @@ namespace CheeBogGrocery
                         dishes[3].ingredients = resetHoneyChickenBao();
                         break;
                     case 4:
-                        dishes[4].ingredients = resetChickenPops();
+                        dishes[4].ingredients = resetHoneyChickenPop();
                         break;
                     case 5:
                         dishes[5].ingredients = resetPorkBao();
@@ -225,10 +239,10 @@ namespace CheeBogGrocery
             dishes[0].updateIngredients(10);
             dishes[0].addPrefix();
 
-            dishes[1].name = "CHICKEN SKEWER";
-            dishes[1].ingredients = resetChickenSkewer();
-            dishes[1].servings = 50;
-            dishes[1].updateIngredients(50);
+            dishes[1].name = "FRIED CHICKEN";
+            dishes[1].ingredients = resetFriedChicken();
+            dishes[1].servings = 40;
+            dishes[1].updateIngredients(40);
             dishes[1].addPrefix();
 
             dishes[2].name = "GRAHAM CAKE";
@@ -304,34 +318,40 @@ namespace CheeBogGrocery
             return chickenPops;
         }
 
-        private List<Ingredient> resetChickenSkewer()
+        private List<Ingredient> resetFriedChicken()
         {
-            List<Ingredient> chickenSkewer = new List<Ingredient>();
-            chickenSkewer.Add(getIngredient("Baking Soda"));
-            chickenSkewer.Add(getIngredient("Chicken Breast"));
-            chickenSkewer.Add(getIngredient("Cooking Salt"));
-            chickenSkewer.Add(getIngredient("Essentials Chef Tomato Sauce"));
-            chickenSkewer.Add(getIngredient("Garlic Bag"));
-            chickenSkewer.Add(getIngredient("MasterFoods Soy Sauce"));
-            chickenSkewer.Add(getIngredient("Raw Sugar"));
-            chickenSkewer.Add(getIngredient("Sprite"));
-            chickenSkewer.Add(getIngredient("Trumps Black Pepper"));
+            List<Ingredient> friedChicken = new List<Ingredient>();
+            friedChicken.Add(getIngredient("Baking Powder"));
+            friedChicken.Add(getIngredient("Bay Leaf"));
+            friedChicken.Add(getIngredient("Chicken Meat Mixed"));
+            friedChicken.Add(getIngredient("Cooking Salt"));
+            friedChicken.Add(getIngredient("Fresh Milk"));
+            friedChicken.Add(getIngredient("Garlic Powder"));
+            friedChicken.Add(getIngredient("Onion Powder"));
+            friedChicken.Add(getIngredient("Paprika"));
+            friedChicken.Add(getIngredient("Raw Sugar"));
+            friedChicken.Add(getIngredient("Self Raising Flour"));
+            friedChicken.Add(getIngredient("Trumps Black Pepper"));
+            friedChicken.Add(getIngredient("Water"));
 
             // Dish update example
-            chickenSkewer[0].weight = "43";
-            chickenSkewer[1].weight = "5000";
-            chickenSkewer[2].weight = "576";
-            chickenSkewer[3].weight = "472";
-            chickenSkewer[4].weight = "20";
-            chickenSkewer[5].weight = "480";
-            chickenSkewer[6].weight = "1000";
-            chickenSkewer[7].weight = "1400";
-            chickenSkewer[8].weight = "234";
+            friedChicken[0].weight = "4";
+            friedChicken[1].weight = "0.15";
+            friedChicken[2].weight = "2126";
+            friedChicken[3].weight = "45.52";
+            friedChicken[4].weight = "236.59";
+            friedChicken[5].weight = "17.4";
+            friedChicken[6].weight = "25.15";
+            friedChicken[7].weight = "3.45";
+            friedChicken[8].weight = "33.4";
+            friedChicken[9].weight = "312.5";
+            friedChicken[10].weight = "25.3";
+            friedChicken[11].weight = "236";
 
             // Change cost
-            setCost(chickenSkewer, 9);
+            setCost(friedChicken, 12);
 
-            return chickenSkewer;
+            return friedChicken;
         }
 
         private List<Ingredient> resetGrahamCake()
@@ -542,7 +562,6 @@ namespace CheeBogGrocery
 
         private string calculateCost(List<Ingredient> grocery, int index)
         {
-            // find the ingredient from the groceries main list using get ingredient and obtain the original cost
             grocery[index].cost = "0";
             int groceriesIndex = 0;
             foreach (Ingredient item in groceries)
