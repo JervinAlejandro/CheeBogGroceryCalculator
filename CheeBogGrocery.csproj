@@ -7,4 +7,16 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Images\Close-Button.png" />
+    <None Remove="Images\Close-Hover.png" />
+    <None Remove="Logo.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\Close-Button.png" />
+    <Resource Include="Images\Close-Hover.png" />
+    <Resource Include="Logo.png" />
+  </ItemGroup>
+
 </Project>
